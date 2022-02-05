@@ -5,8 +5,8 @@ import dynamic from "next/dynamic";
 const Form = dynamic(() => import("../components/Form"), { ssr: false });
 const Preview = dynamic(() => import("./Preview"), { ssr: false });
 
-const templateList = ["Caligrafia", "Default"];
-const selectedTemplate = templateList[Math.floor(Math.random() + 0.5)];
+const templateList = ["Default", "Caligrafia"];
+const selectedTemplate = templateList[1];
 
 function Editor() {
   const name = useLocalStorage("name", "");
@@ -26,7 +26,7 @@ function Editor() {
     <div className={styles.container}>
       <Form className={styles.panel} data={editionData} />
       <Preview
-        className={styles.panel}
+        className={`${styles.panel} ${styles.panel__preview}`}
         data={previewData}
         templateName={selectedTemplate}
       />
