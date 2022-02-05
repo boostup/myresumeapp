@@ -33,14 +33,16 @@ const styles = StyleSheet.create({
 });
 
 // Create Document Component
-const DefaultTemplate = ({ name, model }) => {
+const DefaultTemplate = ({ templateName, model }) => {
   const { firstName, checked } = model;
 
   return (
     <Document>
       <Page size="A4" style={styles.page}>
         <View fixed style={styles.header}>
-          <Text style={{ fontStyle: "italic" }}>template name: {name}</Text>
+          <Text style={{ fontStyle: "italic" }}>
+            template name: {templateName}
+          </Text>
         </View>
         <View style={styles.section}>
           <Text>

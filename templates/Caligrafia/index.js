@@ -26,9 +26,8 @@ const styles = StyleSheet.create({
 });
 
 // Create Document Component
-const DefaultTemplate = ({ name, model }) => {
+const CaligrafiaTemplate = ({ name, model }) => {
   const { firstName, checked } = model;
-
   return (
     <Document>
       <Page size="A4" style={styles.page}>
@@ -36,6 +35,7 @@ const DefaultTemplate = ({ name, model }) => {
           <Text style={{ fontStyle: "italic" }}>template name: {name}</Text>
         </View>
         <View style={styles.section}>
+          <Text>{firstName}</Text>
           <Text>{checked.toString()}</Text>
         </View>
         <View fixed style={styles.footer}>
@@ -50,4 +50,4 @@ const DefaultTemplate = ({ name, model }) => {
     </Document>
   );
 };
-export default DefaultTemplate;
+export default CaligrafiaTemplate;

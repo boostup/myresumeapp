@@ -13,7 +13,7 @@ function Preview({ className, data, templateName }) {
   return (
     <div className={className}>
       <PDFViewer className={className}>
-        <DynamicTemplate name={templateName} model={data} />
+        <DynamicTemplate templateName={templateName} model={data} />
       </PDFViewer>
     </div>
   );

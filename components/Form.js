@@ -3,8 +3,8 @@ export default ({ className, data }) => {
     <form className={className}>
       <input
         type="text"
-        value={data?.name[0]}
-        onChange={(e) => data?.name[1](e.target.value)}
+        value={data?.firstName[0]}
+        onChange={(e) => data?.firstName[1](e.target.value)}
         placeholder="Full name"
         aria-label="fullname"
       />

@@ -9,16 +9,16 @@ const templateList = ["Default", "Caligrafia"];
 const selectedTemplate = templateList[1];
 
 function Editor() {
-  const name = useLocalStorage("name", "");
+  const firstName = useLocalStorage("firstName", "");
   const checked = useLocalStorage("checked", false);
 
   const editionData = {
-    name,
+    firstName,
     checked,
   };
 
   const previewData = {
-    name: name[0],
+    firstName: firstName[0],
     checked: checked[0],
   };
 
