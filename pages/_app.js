@@ -1,7 +1,13 @@
-import '../styles/globals.css'
+import Link from "next/link";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <div>
+      <Link href={"/"}>Home</Link>
+      <Component {...pageProps} />
+    </div>
+  );
 }
 
-export default MyApp
+export default MyApp;
