@@ -10,6 +10,9 @@ export default function Home() {
         <Link href="/resumeEditor">
           <button>Edit Your CV</button>
         </Link>
+        <Link href="/sunEditor">
+          <button>Test Sun Editor</button>
+        </Link>
       </div>
     </div>
   );
