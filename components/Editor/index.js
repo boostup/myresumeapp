@@ -1,9 +1,9 @@
 import styles from "./Editor.module.css";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 import dynamic from "next/dynamic";
 
-const Form = dynamic(() => import("../components/Form"), { ssr: false });
-const Preview = dynamic(() => import("./Preview"), { ssr: false });
+const Form = dynamic(() => import("./EditorForm/index"), { ssr: false });
+const Preview = dynamic(() => import("./EditorPreview"), { ssr: false });
 
 const templateList = ["Default", "Caligrafia"];
 const selectedTemplate = templateList[1];

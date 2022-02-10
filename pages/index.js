@@ -1,17 +1,18 @@
+import { Button } from "@mui/material";
 import Link from "next/link";
-import Editor from "../components/Editor";
 
-import styles from "../styles/Home.module.css";
+import AppHeader from "../components/App/AppHeader";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <div className={styles.main}>
+    <div>
+      <AppHeader />
+      <div>
         <Link href="/resumeEditor">
-          <button>Edit Your CV</button>
+          <Button>Edit Your CV</Button>
         </Link>
         <Link href="/sunEditor">
-          <button>Test Sun Editor</button>
+          <Button>Test Sun Editor</Button>
         </Link>
       </div>
     </div>
