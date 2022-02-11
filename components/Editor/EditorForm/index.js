@@ -2,7 +2,7 @@ import { Box, Button, Container, Grid, Paper, TextField } from "@mui/material";
 import CompletionToolbar from "./CompletionToolbar";
 import EducationSection from "./EducationSection";
 import EmploymentHistorySection from "./EmploymentHistorySection";
-import Header from "./Header";
+import Header from "../Header";
 import PersonalDetailsSection from "./PersonalDetailsSection";
 
 function EditorForm({ className, data }) {
