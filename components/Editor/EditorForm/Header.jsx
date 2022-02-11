@@ -8,7 +8,10 @@ function Header() {
       justifyContent="center"
       height="20vh"
     >
-      <Typography variant="h1" sx={{ xs: { fontSize: "2rem" } }}>
+      <Typography
+        variant="h1"
+        sx={{ fontSize: { xs: "2rem", sm: "3rem", md: "4rem" } }}
+      >
         CV Vichy 2022
       </Typography>
     </Box>
