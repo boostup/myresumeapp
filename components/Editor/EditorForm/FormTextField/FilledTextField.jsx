@@ -3,7 +3,7 @@ import { styled, TextField } from "@mui/material";
 const backgroundColor = "rgb(239, 242, 249)";
 
 const FilledTextInput = styled((props) => (
-  <TextField variant="filled" {...props} />
+  <TextField variant="filled" sx={{ width: "100%" }} {...props} />
 ))(({ theme }) => ({
   "& .MuiInputBase-input": {
     // backgroundColor,
