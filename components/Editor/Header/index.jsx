@@ -21,6 +21,8 @@ const rootStyles = {
 };
 
 const titleStyles = {
-  fontSize: { xs: "2rem", sm: "3rem", md: "4rem" },
+  fontSize: {
+    xs: "2rem",
+  },
   fontWeight: 100,
 };

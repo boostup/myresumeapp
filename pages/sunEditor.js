@@ -1,6 +1,5 @@
 import dynamic from "next/dynamic";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import styles from "../styles/Home.module.css";
 
 import "suneditor/dist/css/suneditor.min.css";
 
