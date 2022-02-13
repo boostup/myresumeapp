@@ -1,19 +1,33 @@
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
 import Link from "next/link";
 import { Button } from "@mui/material";
-// import MenuIcon from "@mui/icons-material/Menu";
+import Image from "next/image";
 
-function AppHeader() {
+function AppHeader({ sx }) {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar sx={{ px: { xs: 0, sm: 2 } }}>
+      <AppBar
+        position="static"
+        color="transparent"
+        sx={{ boxShadow: "unset", borderBottom: "1px solid #ebe8e8" }}
+      >
+        <Toolbar
+          sx={{
+            ...sx,
+            height: { xs: 64, md: 80 },
+          }}
+        >
           <Link href="/">
-            <Button style={{ color: "white" }}>Resume.cv</Button>
+            <Button sx={{ color: "white", textTransform: "lowercase" }}>
+              <Image
+                src="/for-light-bg.svg"
+                width={120}
+                height={32}
+                alt="resume.cv"
+              />
+            </Button>
           </Link>
         </Toolbar>
       </AppBar>

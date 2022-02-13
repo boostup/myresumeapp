@@ -4,18 +4,19 @@ import Image from "next/image";
 import AddIcon from "@mui/icons-material/AddCircle";
 
 export default ({ image, title, caption, children, ...other }) => {
-  const h = 250;
+  const h = 268;
   const w = 190;
+  const xsH = 144;
+  const xsW = 102;
   const br = 2;
 
   return (
     <Stack {...other} component="article" direction="row" spacing={{ xs: 3 }}>
       {image ? (
-        //
         <Box
           sx={{
-            height: h,
-            width: w,
+            height: { xs: xsH, md: h },
+            width: { xs: xsW, md: w },
             borderRadius: br,
             overflow: "hidden",
           }}
@@ -25,8 +26,8 @@ export default ({ image, title, caption, children, ...other }) => {
       ) : (
         <Box
           sx={{
-            height: h,
-            width: w,
+            height: { xs: xsH, md: h },
+            width: { xs: xsW, md: w },
             borderWidth: 1,
             borderStyle: "solid",
             borderColor: "lightgray",
@@ -34,6 +35,7 @@ export default ({ image, title, caption, children, ...other }) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            cursor: "pointer",
           }}
         >
           <AddIcon color="disabled" fontSize="large" />
@@ -45,6 +47,7 @@ export default ({ image, title, caption, children, ...other }) => {
           variant="button"
           fontSize={22}
           color={image ? "" : "text.disabled"}
+          textTransform="capitalize"
         >
           {title}
         </Typography>

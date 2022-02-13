@@ -14,7 +14,11 @@ export default function DocumentsSection() {
   };
 
   return (
-    <Box py={{ xs: 2, sm: 8 }}>
+    <Box
+      sx={{
+        py: { xs: 2, sm: 8 },
+      }}
+    >
       <Typography variant="h1" fontSize={{ xs: "2rem" }}>
         Documents
       </Typography>
@@ -42,7 +46,17 @@ export default function DocumentsSection() {
 const Tab = styled(MUITab)(({ theme }) => ({
   padding: 0,
   minWidth: "70px",
-  marginRight: theme.spacing(3),
+  textTransform: "capitalize",
+
+  [theme.breakpoints.up("xs")]: {
+    marginRight: 0,
+    width: "50%",
+  },
+
+  [theme.breakpoints.up("md")]: {
+    marginRight: theme.spacing(3),
+    width: "auto",
+  },
 }));
 
 function TabPanel(props) {

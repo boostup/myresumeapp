@@ -41,7 +41,7 @@ function ResumesTabPanel() {
         <Article
           title="New Resume"
           caption="Create a tailored resume for each job application. Double your chances of getting hired!"
-          sx={{ display: { xs: "none", lg: "inherit" } }}
+          sx={{ display: { xs: "none", md: "inherit" } }}
         />
       </Link>
     </Stack>
