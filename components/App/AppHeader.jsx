@@ -11,7 +11,11 @@ function AppHeader({ sx }) {
       <AppBar
         position="static"
         color="transparent"
-        sx={{ boxShadow: "unset", borderBottom: "1px solid #ebe8e8" }}
+        sx={{
+          boxShadow: "unset",
+          borderBottom: "1px solid",
+          borderColor: "grey.200",
+        }}
       >
         <Toolbar
           sx={{
@@ -20,7 +24,11 @@ function AppHeader({ sx }) {
           }}
         >
           <Link href="/">
-            <Button sx={{ color: "white", textTransform: "lowercase" }}>
+            <Button
+              sx={{
+                textTransform: "lowercase",
+              }}
+            >
               <Image
                 src="/for-light-bg.svg"
                 width={120}

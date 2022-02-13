@@ -16,10 +16,10 @@ export default function DocumentsSection() {
   return (
     <Box
       sx={{
-        py: { xs: 2, sm: 8 },
+        py: { xs: 2, sm: 9 },
       }}
     >
-      <Typography variant="h1" fontSize={{ xs: "2rem" }}>
+      <Typography variant="subtitle1" fontSize={{ xs: "2rem" }}>
         Documents
       </Typography>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -70,7 +70,7 @@ function TabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ py: 3 }}>{children}</Box>}
+      {value === index && <Box sx={{ py: 5 }}>{children}</Box>}
     </div>
   );
 }

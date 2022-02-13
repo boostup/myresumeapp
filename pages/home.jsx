@@ -6,7 +6,7 @@ import DocumentsSection from "../components/Home/DocumentsSection";
 
 export default function Home() {
   const responsiveness = {
-    px: { xs: 1, sm: 6 },
+    px: { xs: 2, md: 5, lg: 8 },
   };
   return (
     <Box>

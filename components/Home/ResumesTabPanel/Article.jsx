@@ -1,7 +1,7 @@
 import { Box, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 
-import AddIcon from "@mui/icons-material/AddCircle";
+import AddIcon from "@mui/icons-material/AddCircleOutline";
 
 export default ({ image, title, caption, children, ...other }) => {
   const h = 268;
@@ -30,7 +30,7 @@ export default ({ image, title, caption, children, ...other }) => {
             width: { xs: xsW, md: w },
             borderWidth: 1,
             borderStyle: "solid",
-            borderColor: "lightgray",
+            borderColor: "grey.300",
             borderRadius: br,
             display: "flex",
             justifyContent: "center",
@@ -38,7 +38,10 @@ export default ({ image, title, caption, children, ...other }) => {
             cursor: "pointer",
           }}
         >
-          <AddIcon color="disabled" fontSize="large" />
+          <AddIcon
+            fontSize="large"
+            sx={{ width: "2.5em", height: "2.5em", color: "grey.300" }}
+          />
         </Box>
       )}
 
@@ -46,12 +49,12 @@ export default ({ image, title, caption, children, ...other }) => {
         <Typography
           variant="button"
           fontSize={22}
-          color={image ? "" : "text.disabled"}
+          color={image ? "" : "grey.500"}
           textTransform="capitalize"
         >
           {title}
         </Typography>
-        <Typography variant="caption" color="text.disabled">
+        <Typography variant="caption" color="grey.500" mb={2}>
           {caption}
         </Typography>
         {children}
