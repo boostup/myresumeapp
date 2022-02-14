@@ -56,7 +56,7 @@ function AppHeader({ sx }) {
                   variant="contained"
                   onClick={() =>
                     signIn(null, {
-                      callbackUrl: `${window.location.origin}/home`,
+                      callbackUrl: `${window.location.origin}/app/`,
                     })
                   }
                 >

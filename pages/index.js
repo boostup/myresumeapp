@@ -23,7 +23,7 @@ export default function Home() {
             minutes - try now for free!
           </Typography>
           <Box>
-            <Link href="/home">
+            <Link href="/app/">
               <Button variant="contained">Create My Resume</Button>
             </Link>
           </Box>

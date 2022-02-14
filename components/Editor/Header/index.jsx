@@ -5,7 +5,7 @@ function Header() {
   return (
     <Box sx={rootStyles}>
       <Typography sx={titleStyles}>CV Vichy 2022</Typography>
-      <FormCloseButton href="/home" />
+      <FormCloseButton href="/app/" />
     </Box>
   );
 }

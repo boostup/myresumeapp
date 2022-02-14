@@ -17,7 +17,7 @@ function ResumesTabPanel() {
         caption="Updated 11 February, 13:14"
         image="https://ssr.resume.tools/to-image/Rt1bCpzZQqMWTDiUZopLN4FL-1.jpg?size=192&cache=4d36884530"
       >
-        <Link href="/resumes/123" passHref>
+        <Link href="/app/resumes/123" passHref>
           <Button component="a">
             <EditIcon />
             <span>Edit</span>
