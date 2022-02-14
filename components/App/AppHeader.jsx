@@ -1,3 +1,4 @@
+import { useSession, signIn, signOut } from "next-auth/react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -6,29 +7,24 @@ import { Button } from "@mui/material";
 import Image from "next/image";
 
 function AppHeader({ sx }) {
+  const { data: session } = useSession();
+
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar
-        position="static"
-        color="transparent"
-        sx={{
-          boxShadow: "unset",
-          borderBottom: "1px solid",
-          borderColor: "grey.200",
-        }}
-      >
+    <Box sx={_sx.root}>
+      <AppBar position="static" color="transparent" sx={_sx.appBar}>
         <Toolbar
-          sx={{
-            ...sx,
-            height: { xs: 64, md: 80 },
+          sx={(theme) => {
+            return {
+              ...sx,
+              height: {
+                xs: theme.shape.toolbar.xs,
+                md: theme.shape.toolbar.md,
+              },
+            };
           }}
         >
           <Link href="/">
-            <Button
-              sx={{
-                textTransform: "lowercase",
-              }}
-            >
+            <Button sx={_sx.logo}>
               <Image
                 src="/for-light-bg.svg"
                 width={120}
@@ -37,6 +33,38 @@ function AppHeader({ sx }) {
               />
             </Button>
           </Link>
+
+          <Box sx={_sx.panel}>
+            {session && (
+              <Box>
+                <Button
+                  variant="contained"
+                  onClick={() =>
+                    signOut({
+                      callbackUrl: `${window.location.origin}/`,
+                    })
+                  }
+                >
+                  Sign out
+                </Button>
+              </Box>
+            )}
+
+            {!session && (
+              <Box>
+                <Button
+                  variant="contained"
+                  onClick={() =>
+                    signIn(null, {
+                      callbackUrl: `${window.location.origin}/home`,
+                    })
+                  }
+                >
+                  Sign in
+                </Button>
+              </Box>
+            )}
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>
@@ -44,3 +72,22 @@ function AppHeader({ sx }) {
 }
 
 export default AppHeader;
+
+const _sx = {
+  root: {
+    flexGrow: 1,
+  },
+  appBar: {
+    boxShadow: "unset",
+    borderBottom: "1px solid",
+    borderColor: "grey.200",
+  },
+  logo: {
+    textTransform: "lowercase",
+  },
+  panel: {
+    display: "flex",
+    flexGrow: 1,
+    flexDirection: "row-reverse",
+  },
+};
