@@ -1,3 +1,5 @@
+import { useSession } from "next-auth/react";
+
 import { Stack } from "@mui/material";
 import Link from "next/link";
 
@@ -9,10 +11,19 @@ import MoreIcon from "@mui/icons-material/MoreHorizOutlined";
 import Article from "./Article";
 import Button from "./Button";
 
+import { createNewResume } from "../../../data/resumesDataManager";
+
 function ResumesTabPanel() {
+  const { data: session, status } = useSession();
+
+  const newResume = () => {
+    const newResumeId = createNewResume(session?.user?.id);
+    // location = `/app/resumes/${newResumeId}}`;
+  };
+
   return (
     <Stack direction="row" spacing={15}>
-      <Article
+      {/* <Article
         title="CV Vichy 2022"
         caption="Updated 11 February, 13:14"
         image="https://ssr.resume.tools/to-image/Rt1bCpzZQqMWTDiUZopLN4FL-1.jpg?size=192&cache=4d36884530"
@@ -35,15 +46,15 @@ function ResumesTabPanel() {
           <MoreIcon />
           <span>More</span>
         </Button>
-      </Article>
+      </Article> */}
 
-      <Link href="/resumes/123">
+      <Button onClick={newResume}>
         <Article
           title="New Resume"
           caption="Create a tailored resume for each job application. Double your chances of getting hired!"
           sx={{ display: { xs: "none", lg: "inherit" } }}
         />
-      </Link>
+      </Button>
     </Stack>
   );
 }
