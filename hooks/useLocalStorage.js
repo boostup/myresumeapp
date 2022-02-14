@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 
-function getStorageValue(key, defaultValue) {
+export function setStorageValue(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+export function getStorageValue(key, defaultValue) {
   const ISSERVER = typeof window === "undefined";
   let saved = null;
   if (!ISSERVER) {
@@ -16,7 +20,7 @@ export const useLocalStorage = (key, defaultValue) => {
   });
 
   useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(value));
+    setStorageValue(key, value);
   }, [key, value]);
 
   return [value, setValue];
