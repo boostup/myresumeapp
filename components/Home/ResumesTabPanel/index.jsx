@@ -69,7 +69,6 @@ const ResumesList = ({ userId }) => {
   const newResume = () => {
     const newResumeId = createNewResume(userId);
     setResumesList((list) => [...list, newResumeId]);
-    location = `/app/resumes/${newResumeId}}`;
   };
 
   return (
@@ -78,7 +77,7 @@ const ResumesList = ({ userId }) => {
         {resumesList.map((resumeId, idx) => (
           // @Todo: get the resume data by resumeId to feed the <ResumeArticle /> component through props
           // <ResumeArticle />
-          <Link prefetch key={resumeId} href={`/app/resumes/${resumeId}`}>
+          <Link key={resumeId} href={`/app/resumes/${resumeId}`}>
             {`Resume #${idx}`}
           </Link>
         ))}

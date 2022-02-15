@@ -1,13 +1,24 @@
 import { useState } from "react";
+import { useSession } from "next-auth/react";
+
 import Tabs from "@mui/material/Tabs";
 import MUITab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import { Button, styled } from "@mui/material";
+
 import ResumesTabPanel from "./ResumesTabPanel";
-import { styled } from "@mui/material";
+import { createNewResume } from "../../data/resumesDataManager";
 
 export default function DocumentsSection() {
   const [value, setValue] = useState(0);
+  const { data: session, status } = useSession();
+  const userId = session?.user?.id;
+
+  const newResume = () => {
+    const newResumeId = createNewResume(userId);
+    location = `/app/resumes/${newResumeId}`;
+  };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -19,9 +30,18 @@ export default function DocumentsSection() {
         py: { xs: 2, sm: 9 },
       }}
     >
-      <Typography variant="subtitle1" fontSize={{ xs: "2rem" }}>
-        Documents
-      </Typography>
+      <Box position={"relative"}>
+        <Typography variant="subtitle1" fontSize={{ xs: "2rem" }}>
+          Documents
+        </Typography>
+        <Button
+          onClick={newResume}
+          variant={"contained"}
+          sx={{ position: "absolute", top: 0, right: 0 }}
+        >
+          + Create New
+        </Button>
+      </Box>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
           value={value}
