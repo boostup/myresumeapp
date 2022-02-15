@@ -1,6 +1,6 @@
-import styles from "./Editor.module.css";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
 import dynamic from "next/dynamic";
+
+import styles from "./Editor.module.css";
 
 const Form = dynamic(() => import("./EditorForm/index"), { ssr: false });
 const Preview = dynamic(() => import("./EditorPreview"), { ssr: false });
@@ -8,20 +8,9 @@ const Preview = dynamic(() => import("./EditorPreview"), { ssr: false });
 const templateList = ["Default", "Caligrafia"];
 const selectedTemplate = templateList[1];
 
-function Editor() {
-  const firstName = useLocalStorage("firstName", "");
-  const checked = useLocalStorage("checked", false);
-
-  const editionData = {
-    firstName,
-    checked,
-  };
-
-  const previewData = {
-    firstName: firstName[0],
-    checked: checked[0],
-  };
-
+function Editor({ data, setData }) {
+  const editionData = data;
+  const previewData = data;
   return (
     <div className={styles.container}>
       <Form className={styles.panel} data={editionData} />

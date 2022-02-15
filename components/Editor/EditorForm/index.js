@@ -28,6 +28,11 @@ function EditorForm({ className, data }) {
       </form> */}
       <Header />
       <CompletionToolbar />
+
+      <div>
+        <pre>{JSON.stringify(data, null, 2)}</pre>
+      </div>
+
       <PersonalDetailsSection />
       <EmploymentHistorySection />
       <EducationSection />

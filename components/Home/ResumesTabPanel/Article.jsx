@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import AddIcon from "@mui/icons-material/AddCircleOutline";
 
-export default ({ image, title, caption, children, ...other }) => {
+export default ({ title, href, caption, image, children, ...other }) => {
   const h = 268;
   const w = 190;
   const xsH = 144;

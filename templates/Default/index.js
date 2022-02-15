@@ -46,8 +46,10 @@ const DefaultTemplate = ({ templateName, model }) => {
         </View>
         <View style={styles.section}>
           <Text>
-            <Link src="https://clouch.com/profile/boostup">{firstName}</Link> (
-            {checked.toString()})
+            <Link src="https://clouch.com/profile/boostup">
+              {/* {firstName} */}
+            </Link>{" "}
+            ({/* {checked.toString()}) */}
           </Text>
         </View>
         <View style={styles.section}>
