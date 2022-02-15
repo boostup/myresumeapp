@@ -1,9 +1,9 @@
 import dynamic from "next/dynamic";
 
-import styles from "./Editor.module.css";
+import Form from "./EditorForm/index";
+import Preview from "./EditorPreview";
 
-const Form = dynamic(() => import("./EditorForm/index"), { ssr: false });
-const Preview = dynamic(() => import("./EditorPreview"), { ssr: false });
+import styles from "./Editor.module.css";
 
 const templateList = ["Default", "Caligrafia"];
 const selectedTemplate = templateList[1];
