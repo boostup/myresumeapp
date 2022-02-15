@@ -38,7 +38,6 @@ function AppHeader({ sx }) {
             {session && (
               <Box>
                 <Button
-                  variant="contained"
                   onClick={() =>
                     signOut({
                       callbackUrl: `${window.location.origin}/`,
