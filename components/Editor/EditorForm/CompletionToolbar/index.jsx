@@ -2,8 +2,6 @@ import { Divider, Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import { useRef } from "react";
 
-import styles from "./CompletionToolbar.module.css";
-
 function CompletionToolbar() {
   const elRef = useRef();
   const observer = new IntersectionObserver(
