@@ -51,6 +51,7 @@ const DefaultTemplate = ({ templateName, model }) => {
             </Link>{" "}
             ({/* {checked.toString()}) */}
           </Text>
+          <Text>{JSON.stringify(model, null, 2)}</Text>
         </View>
         <View style={styles.section}>
           <Text>

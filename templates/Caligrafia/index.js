@@ -40,6 +40,7 @@ const CaligrafiaTemplate = ({ templateName, model }) => {
         <View style={styles.section}>
           <Text>{/* {firstName} */}</Text>
           <Text>{/* {checked.toString()} */}</Text>
+          <Text>{JSON.stringify(model, null, 2)}</Text>
         </View>
         <View fixed style={styles.footer}>
           <Text
