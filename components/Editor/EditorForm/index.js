@@ -1,5 +1,4 @@
-import { Box, Button, Container, Grid, Paper, TextField } from "@mui/material";
-import CompletionToolbar from "./CompletionToolbar";
+import { Box } from "@mui/material";
 import EducationSection from "./EducationSection";
 import EmploymentHistorySection from "./EmploymentHistorySection";
 import Header from "../Header";
@@ -9,7 +8,7 @@ function EditorForm({ className, data, onChange }) {
   return (
     <div className={className}>
       <Header model={data.resume} onLangChange={onChange} />
-      <CompletionToolbar />
+
       <PersonalDetailsSection />
       <EmploymentHistorySection />
       <EducationSection />

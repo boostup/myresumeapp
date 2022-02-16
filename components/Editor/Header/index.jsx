@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import EditInPlaceTextField from "../EditorForm/FormTextField/EditInPlaceTextField";
 import FormCloseButton from "./FormCloseButton";
 import LanguageSelector from "./LanguageSelector";
+import CompletionToolbar from "./CompletionToolbar";
 
 function Header({ model, onLangChange, ...other }) {
   const { name, language } = model;
@@ -16,7 +17,7 @@ function Header({ model, onLangChange, ...other }) {
         {...other}
       />
       <LanguageSelector lang={language} onChange={onLangChange} />
-
+      <CompletionToolbar />
       <FormCloseButton href="/app/" />
     </Box>
   );
