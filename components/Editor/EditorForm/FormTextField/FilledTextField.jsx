@@ -6,7 +6,10 @@ const FilledTextField = ({ sx, ...other }) => (
     sx={{
       width: "100%",
       ...styles,
-      "& .MuiInputBase-input": { ...sx },
+      "& .MuiInputBase-input": {
+        padding: "1.5rem 1rem",
+        ...sx,
+      },
     }}
     {...other}
   />
@@ -14,9 +17,6 @@ const FilledTextField = ({ sx, ...other }) => (
 
 const backgroundColor = "rgb(239, 242, 249)";
 const styles = {
-  "& .MuiInputBase-input": {
-    padding: "12px 16px",
-  },
   "& .MuiFilledInput-root": {
     backgroundColor,
   },

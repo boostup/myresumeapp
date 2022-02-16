@@ -7,7 +7,7 @@ const styles = {
   position: "absolute",
   cursor: "pointer",
   top: "0",
-  right: "16px",
+  right: "0",
   width: "32px",
   height: "32px",
   borderRadius: "16px",

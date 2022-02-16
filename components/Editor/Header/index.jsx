@@ -31,11 +31,12 @@ const rootStyles = {
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  height: "20vh",
 };
 
 const titleStyles = {
-  fontSize: "3rem",
-  fontWeight: 200,
+  fontSize: { xs: "1.5rem", sm: "2.3rem", md: "3rem" },
+  fontWeight: { xs: "400", md: "200" },
+  padding: 0,
   textAlign: "center",
+  transition: "font-size .4s",
 };
