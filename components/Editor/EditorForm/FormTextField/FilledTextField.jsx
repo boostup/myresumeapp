@@ -1,12 +1,20 @@
-import { styled, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
+
+const FilledTextField = ({ sx, ...other }) => (
+  <TextField
+    variant="filled"
+    sx={{
+      width: "100%",
+      ...styles,
+      "& .MuiInputBase-input": { ...sx },
+    }}
+    {...other}
+  />
+);
 
 const backgroundColor = "rgb(239, 242, 249)";
-
-const FilledTextInput = styled((props) => (
-  <TextField variant="filled" sx={{ width: "100%" }} {...props} />
-))(({ theme }) => ({
+const styles = {
   "& .MuiInputBase-input": {
-    // backgroundColor,
     padding: "12px 16px",
   },
   "& .MuiFilledInput-root": {
@@ -29,6 +37,6 @@ const FilledTextInput = styled((props) => (
   "& .MuiFilledInput-root.MuiFilledInput-underline:hover:before": {
     borderBottom: "0",
   },
-}));
+};
 
-export default FilledTextInput;
+export default FilledTextField;

@@ -18,15 +18,16 @@ function Editor({ userId, resumeId }) {
   const [resumeData, setResumeData] = useLocalStorage(storageKey, {
     default: { object: "" },
   });
-
-  const editionData = resumeData;
-  const previewData = resumeData;
   return (
     <div className={styles.container}>
-      <Form className={styles.panel} data={editionData} />
+      <Form
+        className={styles.panel}
+        data={resumeData}
+        onChange={setResumeData}
+      />
       <Preview
         className={`${styles.panel} ${styles.panel__preview}`}
-        data={previewData}
+        data={resumeData}
         templateName={selectedTemplate}
       />
     </div>

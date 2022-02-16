@@ -1,10 +1,21 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
+import EditInPlaceTextField from "../EditorForm/FormTextField/EditInPlaceTextField";
 import FormCloseButton from "./FormCloseButton";
+import LanguageSelector from "./LanguageSelector";
 
-function Header() {
+function Header({ model, onLangChange, ...other }) {
+  const { name, language } = model;
+
   return (
     <Box sx={rootStyles}>
-      <Typography sx={titleStyles}>CV Vichy 2022</Typography>
+      <EditInPlaceTextField
+        sx={titleStyles}
+        value={name}
+        onChange={onLangChange}
+        {...other}
+      />
+      <LanguageSelector lang={language} onChange={onLangChange} />
+
       <FormCloseButton href="/app/" />
     </Box>
   );
@@ -15,14 +26,14 @@ export default Header;
 const rootStyles = {
   position: "relative",
   display: "flex",
+  flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
   height: "20vh",
 };
 
 const titleStyles = {
-  fontSize: {
-    xs: "2rem",
-  },
-  fontWeight: 100,
+  fontSize: "3rem",
+  fontWeight: 200,
+  textAlign: "center",
 };
