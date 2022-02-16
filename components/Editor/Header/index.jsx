@@ -12,6 +12,7 @@ function Header({ model, onLangChange, ...other }) {
         sx={titleStyles}
         value={name}
         onChange={onLangChange}
+        placeholder="Resume name"
         {...other}
       />
       <LanguageSelector lang={language} onChange={onLangChange} />

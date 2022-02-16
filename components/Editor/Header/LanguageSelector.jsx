@@ -17,15 +17,18 @@ function LanguageSelector({ lang, onChange }) {
       <Box
         sx={{
           ...flagStyles,
-          backgroundPosition: flags[lang].backgroundPosition,
+          backgroundPosition: flags[lang]?.backgroundPosition,
         }}
       />
       <Select
         variant="standard"
-        value={flags[lang].value}
+        value={flags[lang]?.value || "default-value"}
         onChange={handleChange}
         sx={langStyles}
       >
+        <MenuItem key="default-option" value="default-value">
+          language
+        </MenuItem>
         {Object.keys(flags).map((lang, i) => {
           const { label, value } = flags[lang];
           return (
@@ -34,7 +37,7 @@ function LanguageSelector({ lang, onChange }) {
                 className="flag"
                 sx={{
                   ...flagStyles,
-                  backgroundPosition: flags[lang].backgroundPosition,
+                  backgroundPosition: flags[lang]?.backgroundPosition,
                 }}
               />
 
