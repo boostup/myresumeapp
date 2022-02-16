@@ -1,8 +1,14 @@
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
-function Label({ children }) {
+function Label({ children, sx }) {
   return (
-    <Typography variant="caption" sx={styles}>
+    <Typography
+      variant="caption"
+      sx={{
+        ...styles,
+        ...sx,
+      }}
+    >
       {children}
     </Typography>
   );
