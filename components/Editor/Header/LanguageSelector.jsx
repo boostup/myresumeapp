@@ -56,7 +56,7 @@ const rootStyles = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  // See only the flags that are inside the <option> items of the select, not the select itself
+  // The following CSS selector ensures we can only see the flags that are inside the <option> items of the select, not the select itself
   "& [aria-expanded=false] .flag, & [aria-expanded=true] .flag": {
     display: "none",
   },

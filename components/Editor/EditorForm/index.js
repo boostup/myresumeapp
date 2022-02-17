@@ -7,7 +7,7 @@ import PersonalDetailsSection from "./PersonalDetailsSection";
 function EditorForm({ className, data, onChange }) {
   return (
     <div className={className}>
-      <Header model={data.resume} onLangChange={onChange} />
+      <Header model={data.resume} onChange={onChange} />
 
       <PersonalDetailsSection />
       <EmploymentHistorySection />

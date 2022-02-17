@@ -1,8 +1,10 @@
+import Link from "next/link";
 import { Button, LinearProgress as MUILinearProgress } from "@mui/material";
 import { Box, styled } from "@mui/system";
-import Label from "../../EditorForm/Label";
-import { fromRedToGreen } from "../../../../utils/colors";
-import useIntersect from "../../../../hooks/useIntersect";
+
+import Label from "../Label";
+import { fromRedToGreen } from "../../../utils/colors";
+import useIntersect from "../../../hooks/useIntersect";
 
 function CompletionToolbar() {
   // @Todo: calculate progress according to the actual completedness level of the resume
@@ -17,7 +19,6 @@ function CompletionToolbar() {
 
   return (
     <Box ref={ref} sx={rootStyles}>
-      {/* <div style={{ width: "100%", position: "relative" }}> */}
       <Box sx={innerStyles} className={className}>
         <Box sx={panelStyles}>
           <Box>
@@ -33,16 +34,15 @@ function CompletionToolbar() {
           </Box>
 
           {/* @Todo: this button's functionality depends on being able to add sections to the resume, which is still not possible at the moment */}
-          <Button
-            sx={{
-              display: { xs: "none", sm: "block" },
-              padding: 0,
-            }}
-          >
-            2% Add languages (?)
-          </Button>
+          <Link sx={addSection} href="javascript:void(0)">
+            <Box>
+              <Label sx={labelStyles}>2%</Label>{" "}
+              <Label>Add languages (?)</Label>
+            </Box>
+          </Link>
         </Box>
         <Box sx={{ color: colorFromProgress }}>
+          {/* @Todo: this component value is changed every time the view is rendered. this is not expected behavior. */}
           <LinearProgress
             variant="determinate"
             value={progressPercentage}
@@ -50,12 +50,15 @@ function CompletionToolbar() {
           />
         </Box>
       </Box>
-      {/* </div> */}
     </Box>
   );
 }
 
 export default CompletionToolbar;
+
+const LinearProgress = styled(MUILinearProgress)(({ theme }) => ({
+  height: 3,
+}));
 
 const calcComplitionPercentage = (data) => Math.floor(Math.random() * 100);
 const buildThresholdArray = () => Array.from(Array(100).keys(), (i) => i / 100);
@@ -109,6 +112,12 @@ const labelStyles = {
   marginRight: "6px",
 };
 
-const LinearProgress = styled(MUILinearProgress)(({ theme }) => ({
-  height: 3,
-}));
+const addSection = {
+  display: { xs: "none", sm: "flex" },
+  textTransform: "capitalize",
+  padding: 0,
+  "& > div": {
+    display: "flex",
+    alignItems: "baseline",
+  },
+};

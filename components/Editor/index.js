@@ -23,6 +23,7 @@ function Editor({ userId, resumeId }) {
       <Form
         className={styles.panel}
         data={resumeData}
+        // @Todo: serious prop drilling happening here (3-4 levels deep down this hole!) (https://medium.com/swlh/avoid-prop-drilling-with-react-context-a00392ee3d8)
         onChange={setResumeData}
       />
       <Preview

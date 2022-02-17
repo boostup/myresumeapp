@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import FilledTextField from "./FilledTextField";
-import Label from "../Label";
+import Label from "../../Label";
 
 const FormTextField = ({ toplabel, sx, ...other }) => {
   return (

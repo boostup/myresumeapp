@@ -4,7 +4,7 @@ import FormCloseButton from "./FormCloseButton";
 import LanguageSelector from "./LanguageSelector";
 import CompletionToolbar from "./CompletionToolbar";
 
-function Header({ model, onLangChange, ...other }) {
+function Header({ model, onChange, ...other }) {
   const { name, language } = model;
 
   return (
@@ -12,11 +12,11 @@ function Header({ model, onLangChange, ...other }) {
       <EditInPlaceTextField
         sx={titleStyles}
         value={name}
-        onChange={onLangChange}
+        onChange={onChange}
         placeholder="Resume name"
         {...other}
       />
-      <LanguageSelector lang={language} onChange={onLangChange} />
+      <LanguageSelector lang={language} onChange={onChange} />
       <CompletionToolbar />
       <FormCloseButton href="/app/" />
     </Box>
@@ -34,6 +34,8 @@ const rootStyles = {
 };
 
 const titleStyles = {
+  // @Todo: on "lg" screen factor, the maximum size is too big (Thinking of long Resume titles)
+  // Idea: see if I can combine clamp by minmax for the lg value => https://youtu.be/3elGSZSWTbM?t=323
   fontSize: "clamp(1.3rem, 5.3vw, 5.9rem)",
   fontWeight: "clamp(200,300,400)",
   ["--padding-xs"]: "2%",

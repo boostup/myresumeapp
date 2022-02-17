@@ -2,6 +2,18 @@ import CloseIcon from "@mui/icons-material/Close";
 import { Box } from "@mui/material";
 import Link from "next/link";
 
+function FormCloseButton({ href }) {
+  return (
+    <Box sx={styles}>
+      <Link href={href}>
+        <CloseIcon />
+      </Link>
+    </Box>
+  );
+}
+
+export default FormCloseButton;
+
 const styles = {
   display: "flex",
   position: { xs: "absolute", md: "fixed" },
@@ -19,15 +31,3 @@ const styles = {
   backgroundColor: "rgb(190, 196, 213)",
   zIndex: 2,
 };
-
-function FormCloseButton({ href }) {
-  return (
-    <Box sx={styles}>
-      <Link href={href}>
-        <CloseIcon />
-      </Link>
-    </Box>
-  );
-}
-
-export default FormCloseButton;

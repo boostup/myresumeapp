@@ -12,7 +12,7 @@ export default {
   },
   "es-MX": {
     backgroundPosition: "-285px 0px",
-    value: "es-ES",
+    value: "es-MX",
     label: "Español (MX)",
   },
   "fr-FR": {

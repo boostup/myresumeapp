@@ -16,14 +16,12 @@ function AppHeader({ sx }) {
           sx={(theme) => {
             return {
               ...sx,
-              height: {
-                xs: theme.shape.toolbar.xs,
-                md: theme.shape.toolbar.md,
-              },
+              ..._sx.toolBar(theme),
             };
           }}
         >
           <Link href="/">
+            {/* @Todo: remove button padding */}
             <Button sx={_sx.logo}>
               <Image
                 src="/for-light-bg.svg"
@@ -81,6 +79,12 @@ const _sx = {
     borderBottom: "1px solid",
     borderColor: "grey.200",
   },
+  toolBar: (theme) => ({
+    height: {
+      xs: theme.shape.toolbar.xs,
+      md: theme.shape.toolbar.md,
+    },
+  }),
   logo: {
     textTransform: "lowercase",
   },
