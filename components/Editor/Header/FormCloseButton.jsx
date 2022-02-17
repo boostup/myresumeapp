@@ -4,10 +4,10 @@ import Link from "next/link";
 
 const styles = {
   display: "flex",
-  position: "absolute",
+  position: { xs: "absolute", md: "fixed" },
   cursor: "pointer",
-  top: "0",
-  right: "0",
+  top: { xs: "0", md: "13px" },
+  right: { xs: "0", md: "31px" },
   width: "32px",
   height: "32px",
   borderRadius: "16px",
@@ -17,13 +17,12 @@ const styles = {
   justifyContent: "center",
   color: "rgb(255, 255, 255)",
   backgroundColor: "rgb(190, 196, 213)",
-  // display: "none",
   zIndex: 2,
 };
 
 function FormCloseButton({ href }) {
   return (
-    <Box style={styles}>
+    <Box sx={styles}>
       <Link href={href}>
         <CloseIcon />
       </Link>

@@ -79,10 +79,10 @@ const innerStyles = {
     top: "0",
     left: "0",
     padding: {
-      xs: "0.5rem 0.6rem 0",
-      sm: "0.5rem 0.9rem 0",
-      md: "1rem 13.4vw 0 15vw",
-      lg: "1rem 5vw 0 5vw",
+      xs: "0.5rem 5vw 1rem",
+      sm: "0.5rem 5vw 1rem",
+      md: "1rem 15vw 1rem",
+      lg: "1rem 5vw 1rem",
     },
     maxWidth: {
       lg: "50vw",
