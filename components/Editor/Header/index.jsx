@@ -34,9 +34,14 @@ const rootStyles = {
 };
 
 const titleStyles = {
-  fontSize: { xs: "1.5rem", sm: "2.3rem", md: "3rem" },
-  fontWeight: { xs: "400", md: "200" },
-  padding: 0,
+  fontSize: "clamp(1.3rem, 5.3vw, 5.9rem)",
+  fontWeight: "clamp(200,300,400)",
+  ["--padding-xs"]: "2%",
+  ["--padding-md"]: "5%",
+  ["--padding-lg"]: "10%",
+  paddingTop: "clamp(var(--padding-xs), var(--padding-md), var(--padding-lg))",
+  paddingBottom:
+    "clamp(var(--padding-xs), var(--padding-md), var(--padding-lg))",
   textAlign: "center",
   transition: "font-size .4s",
 };
