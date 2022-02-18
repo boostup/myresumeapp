@@ -4,6 +4,8 @@ export default {
     caption: "",
     language: "",
     completion: "",
+    thumbnailBlob: "",
+    thumbnailURL: "",
   },
   personalDetails: {
     wantedJobTitle: "",

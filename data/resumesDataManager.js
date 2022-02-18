@@ -3,14 +3,16 @@ import { v4 as uuidv4 } from "uuid";
 import { setStorageValue, getStorageValue } from "../hooks/useLocalStorage";
 import resumeSchema from "./schema";
 
-const USER_RESUME_LIST_KEY = "MY_RESUME_APP_USER_RESUMES_LIST";
-function initResumesListInStorage(userId) {
+export const USER_RESUME_LIST_KEY = "MY_RESUME_APP_USER_RESUMES_LIST";
+export const KEY_SEPARATOR = "::";
+
+export function initResumesListInStorage(userId) {
   if (!userId) return;
 
   const [resumes, resumesListStorageKey] = getResumesListInStorage(userId);
 
   if (!Array.isArray(resumes)) {
-    setStorageValue(resumesListStorageKey, [1, 2, 3]);
+    setStorageValue(resumesListStorageKey, []);
   }
 }
 
@@ -19,8 +21,33 @@ export function getResumesListInStorage(userId) {
   return [getStorageValue(storageKey), storageKey];
 }
 
+export function getResumeInStorage(
+  userId,
+  resumeId,
+  requestedResumeSections = []
+) {
+  const storageKey = storageKeyForResume(userId, resumeId);
+  const resumeModel = getStorageValue(storageKey);
+
+  if (requestedResumeSections.length === 0) return resumeModel;
+
+  // Otherwise...
+  const resumeDataWithSections = requestedResumeSections.reduce(
+    (_resumeData, sectionName) => {
+      _resumeData[sectionName] = resumeModel[sectionName];
+      return _resumeData;
+    },
+    {}
+  );
+
+  return resumeDataWithSections;
+}
+
 export const createNewResume = (userId) => {
-  if (!userId) return false;
+  if (!userId)
+    throw new Error(
+      `A user id must be provided. '${userId?.toString()}' was provided.`
+    );
 
   initResumesListInStorage(userId);
 
@@ -48,5 +75,5 @@ export function storageKeyForResumesList(userId) {
 }
 
 export function storageKeyForResume(userId, resumeId) {
-  return `Resume::${resumeId}::${userId}`;
+  return `${resumeId}::${userId}`;
 }

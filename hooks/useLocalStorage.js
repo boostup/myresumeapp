@@ -9,6 +9,7 @@ export function getStorageValue(key, defaultValue) {
   let saved = null;
   if (!ISSERVER) {
     saved = localStorage.getItem(key);
+    saved = saved === "undefined" ? "{}" : saved;
   }
   const initial = JSON.parse(saved);
   return initial || defaultValue;
