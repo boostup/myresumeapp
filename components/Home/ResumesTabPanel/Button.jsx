@@ -6,12 +6,14 @@ export default ({ children, ...other }) => (
   </CustomButton>
 );
 
-const CustomButton = styled(Button)(({ theme }) => {
+const CustomButton = styled(Button)(({ theme, padding }) => {
   return {
+    padding,
     justifyContent: "flex-start",
     alignItems: "revert",
     fontSize: "1rem",
     textTransform: "capitalize",
+    textAlign: "left",
     "& svg": {
       marginRight: theme.spacing(2),
     },

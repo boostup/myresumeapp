@@ -1,9 +1,11 @@
+import Link from "next/link";
 import EditIcon from "@mui/icons-material/EditOutlined";
 import ShareIcon from "@mui/icons-material/IosShareOutlined";
 import DownloadIcon from "@mui/icons-material/SimCardDownloadOutlined";
 import MoreIcon from "@mui/icons-material/MoreHorizOutlined";
 
 import Article from "./Article";
+import Button from "./Button";
 
 const ResumeArticle = ({ title, href, caption, image }) => (
   <Article title={title} caption={caption} image={image}>

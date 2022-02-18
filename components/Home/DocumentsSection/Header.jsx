@@ -1,29 +1,13 @@
-import { Button, Typography } from "@mui/material";
-import { useSession } from "next-auth/react";
-
-import { createNewResume } from "../../../data/resumesDataManager";
+import { Typography } from "@mui/material";
+import AddResumeButton from "../AddResumeButton";
 
 function Header() {
-  const { data: session, status } = useSession();
-  const userId = session?.user?.id;
-
-  const newResume = () => {
-    const newResumeId = createNewResume(userId);
-    location = `/app/resumes/${newResumeId}`;
-  };
-
   return (
     <>
       <Typography variant="subtitle1" sx={_sx.titleStyles}>
         Documents
       </Typography>
-      <Button
-        onClick={newResume}
-        variant={"contained"}
-        sx={_sx.newResumeButtonStyles}
-      >
-        + Create New
-      </Button>
+      <AddResumeButton sx={_sx.addResumeButtonStyles} size="small" />
     </>
   );
 }
@@ -34,5 +18,10 @@ const _sx = {
   titleStyles: {
     fontSize: { xs: "2rem" },
   },
-  newResumeButtonStyles: { position: "absolute", top: 0, right: 0 },
+  addResumeButtonStyles: {
+    display: { xs: "none", md: "block" },
+    position: "absolute",
+    top: 0,
+    right: 0,
+  },
 };
