@@ -3,11 +3,14 @@ import Image from "next/image";
 
 import AddIcon from "@mui/icons-material/AddCircleOutline";
 
-export default ({ title, href, caption, image, children, ...other }) => {
+export default ({ title, language, caption, image, children, ...other }) => {
   return (
     <Stack {...other} component="article" direction="row" spacing={{ xs: 3 }}>
+      {/* @Todo: need to create a 'variant="addNewButton" & 'variant="normal"' (by default this one). This will make this component more scalable, than testing whether there is an image or not.  For variant "addNewButton" clicking anywhere to action the button is a must. For variant "normal", clicking on both thumbnail and "Edit" button navigates to the editor page for that resume id (Note: the edit button is part of the "props.children" ~ smells like prop drilling, not like teen spirit ;) */}
       {image ? (
         <Box sx={_sx.articleCard}>
+          {/* @Todo: how do I generate a preview/thumbnail with PDFViewer package?  
+          Also, where do I store it and manage its url? */}
           <Image height={h} width={w} src={image} />
         </Box>
       ) : (
@@ -23,7 +26,8 @@ export default ({ title, href, caption, image, children, ...other }) => {
           color={image ? "" : "grey.500"}
           textTransform="capitalize"
         >
-          {title}
+          {/* @Todo:  could be cool to place the flag next or below the CV title */}
+          {title} {language}
         </Typography>
         <Typography variant="caption" color="grey.500" mb={2}>
           {caption}

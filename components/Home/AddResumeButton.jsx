@@ -8,8 +8,8 @@ function AddResumeButton({ sx, ...other }) {
   const userId = session?.user?.id;
 
   const newResume = () => {
-    const newResumeId = createNewResume(userId);
-    location = `/app/resumes/${newResumeId}`;
+    const newResume = createNewResume(userId);
+    location = `/app/resumes/${newResume.id}`;
   };
 
   return (

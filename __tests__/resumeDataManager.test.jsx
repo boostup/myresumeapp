@@ -7,7 +7,7 @@ const {
   getResumeInStorage,
   getResumesListInStorage,
   initResumesListInStorage,
-  getPluckedResumesListInStorage,
+  getPluckedResumesData,
 } = require("../data/resumesDataManager");
 const { setStorageValue } = require("../hooks/useLocalStorage");
 
@@ -18,7 +18,7 @@ const resume_storageKey = `${resumeId}${KEY_SEPARATOR}${userId}`;
 class MockObj {
   constructor(id) {
     this.id = id;
-    this.resume = {};
+    this.meta = {};
   }
 }
 
@@ -108,37 +108,44 @@ test(`Creating a new resume without a valid 'userId' should throw an Error`, () 
 });
 
 test(`Creating a new resume for userId='${userId}' should return the new resume 'id'`, () => {
-  const _resumeId = createNewResume(userId);
-  expect(_resumeId).toBeTruthy();
+  const _resume = createNewResume(userId);
+  expect(_resume.id).toBeTruthy();
 });
 
 test(`[direct test] Creating a new resume should result in a new resume item in storage with matching id's`, () => {
-  const _resumeId = createNewResume(userId);
-  const targetStorageKey = storageKeyForResume(userId, _resumeId);
+  const _resume = createNewResume(userId);
+  const targetStorageKey = storageKeyForResume(userId, _resume.id);
 
   // [by direct test, I mean => using 'localStorage.getItem' instead of 'getResumeInStorage']
   const storedObj = JSON.parse(localStorage.getItem(targetStorageKey));
-  expect(storedObj.id).toEqual(_resumeId);
+  expect(storedObj.id).toEqual(_resume.id);
 });
 
 test(`[indirect test] Creating a new resume should result in a new resume item in storage with matching id's`, () => {
-  const _resumeId = createNewResume(userId);
+  const _resume = createNewResume(userId);
 
   // [by indirect test, I mean => using 'getResumeInStorage' instead of localStorage.getItem directly]
-  const resume = getResumeInStorage(userId, _resumeId);
-  expect(resume.id).toMatch(_resumeId);
+  const resume = getResumeInStorage(userId, _resume.id);
+  expect(resume.id).toMatch(_resume.id);
 });
 
 test(`Creating a new resume should also store the new id in the stored resumes list of id's for that user`, () => {
-  const _resumeId = createNewResume(userId);
+  const _resume = createNewResume(userId);
   const targetStorageKey = storageKeyForResumesList(userId);
   const storedArray = JSON.parse(localStorage.getItem(targetStorageKey));
-  expect(storedArray).toContain(_resumeId);
+  expect(storedArray).toContain(_resume.id);
 });
 
 test(`Getting a resume with specific sections results in a resume object which includes the specified section(s) only`, () => {
-  const sections = ["id", "resume", "personalDetails"];
-  const _resumeId = createNewResume(userId);
-  const resume = getResumeInStorage(userId, _resumeId, sections);
-  expect(Object.keys(resume)).toMatchObject(sections);
+  const options = { sections: ["id", "meta", "personalDetails"] };
+  const _resume = createNewResume(userId);
+  const resume = getResumeInStorage(userId, _resume.id, options);
+  expect(Object.keys(resume)).toMatchObject(options.sections);
+});
+
+test(`Getting plucked data of all resumes for userId='${userId}' matches an Array of objects with the specified resume sections (id, meta, personalDetails, work, education, skills, etc).`, () => {
+  const options = { sections: ["id", "meta", "personalDetails", "work"] };
+  const _resume = createNewResume(userId);
+  const pluckedResumesData = getPluckedResumesData(userId, options);
+  expect(Object.keys(pluckedResumesData[0])).toMatchObject(options.sections);
 });

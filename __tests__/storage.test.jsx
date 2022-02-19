@@ -9,7 +9,7 @@ const bar = `bar`;
 const targetStorageKey = `${foo}-${bar}`;
 const someFakeContent = {
   id: targetStorageKey,
-  resume: {},
+  meta: {},
 };
 
 test(`Inserting an item of type 'object' into storage with key '${targetStorageKey}' (foo='${foo}' + bar='${bar}')`, () => {

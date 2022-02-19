@@ -5,13 +5,13 @@ import LanguageSelector from "./LanguageSelector";
 import CompletionToolbar from "./CompletionToolbar";
 
 function Header({ model, onChange, ...other }) {
-  const { name, language } = model;
+  const { language, title } = model;
 
   return (
     <Box sx={rootStyles}>
       <EditInPlaceTextField
         sx={titleStyles}
-        value={name}
+        value={title}
         onChange={onChange}
         placeholder="Resume name"
         {...other}

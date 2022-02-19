@@ -8,7 +8,7 @@ function LanguageSelector({ lang, onChange }) {
       const model = {
         ...fullFormModel,
       };
-      model.resume.language = e.target.value;
+      model.meta.language = e.target.value;
       return model;
     });
 

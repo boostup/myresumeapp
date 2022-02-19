@@ -21,20 +21,36 @@ export function getResumesListInStorage(userId) {
   return [getStorageValue(storageKey), storageKey];
 }
 
+export function getPluckedResumesData(
+  userId,
+  options = { sections: ["id", "meta"] }
+) {
+  const storageKey = storageKeyForResumesList(userId);
+  const resumesList = getStorageValue(storageKey);
+
+  const pluckedResumesData = resumesList.map((resumeId, i) => {
+    return getResumeInStorage(userId, resumeId, options);
+  });
+
+  return pluckedResumesData;
+}
+
 export function getResumeInStorage(
   userId,
   resumeId,
-  requestedResumeSections = []
+  options = { sections: [] }
 ) {
   const storageKey = storageKeyForResume(userId, resumeId);
   const resumeModel = getStorageValue(storageKey);
 
-  if (requestedResumeSections.length === 0) return resumeModel;
+  if (options?.sections?.length === 0) return resumeModel;
 
   // Otherwise...
-  const resumeDataWithSections = requestedResumeSections.reduce(
+  const resumeDataWithSections = options?.sections?.reduce(
     (_resumeData, sectionName) => {
-      _resumeData[sectionName] = resumeModel[sectionName];
+      _resumeData[sectionName] =
+        //
+        resumeModel?.[sectionName];
       return _resumeData;
     },
     {}
@@ -55,14 +71,14 @@ export const createNewResume = (userId) => {
   const newResumeData = ResumeFactory(newResumeId);
   const newResumeStorageKey = storageKeyForResume(userId, newResumeId);
 
-  // keeping the new resume id the list of resumes for that user (stored with key `USER_RESUME_LIST_KEY::userId`=> An array of objects manufactored by ResumeFactory)
+  // keeping the new resume id the list of resumes for that user (stored with key `USER_RESUME_LIST_KEY::userId`=> An array of manufactored objects by ResumeFactory)
   const [resumesList, resumesListStorageKey] = getResumesListInStorage(userId);
   setStorageValue(resumesListStorageKey, [...resumesList, newResumeId]);
 
   // storing the actual resume data in a separate storage unit with the key `Resume::userId::resumeId`
   setStorageValue(newResumeStorageKey, newResumeData);
 
-  return newResumeId;
+  return newResumeData;
 };
 
 const ResumeFactory = (resumeId) => ({

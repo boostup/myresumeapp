@@ -12,7 +12,7 @@ const EditInPlaceTextField = ({ sx, onChange, ...other }) => {
       const model = {
         ...fullFormModel,
       };
-      model.resume.name = e.target.value;
+      model.meta.title = e.target.value;
       return model;
     });
 

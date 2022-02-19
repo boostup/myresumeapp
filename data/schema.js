@@ -1,6 +1,6 @@
 export default {
-  resume: {
-    name: "",
+  meta: {
+    title: "",
     caption: "",
     language: "",
     completion: "",
