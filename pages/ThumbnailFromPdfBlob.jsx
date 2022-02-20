@@ -50,11 +50,16 @@ const uploadPdfBlob = (blob) => (e) => {
     method: "POST",
     body: formData,
   })
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      return response.json();
+    })
     .then(function (data) {
-      localStorage.setItem(
-        "tamere",
-        JSON.stringify({ seed: Math.random() * 10, data })
-      );
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
     });
 };

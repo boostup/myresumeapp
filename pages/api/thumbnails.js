@@ -1,5 +1,9 @@
-import fs from "fs";
-import formidable from "formidable";
+import Promise from "bluebird";
+import { rename } from "fs/promises";
+import formidableImport from "formidable";
+import pdf from "pdf-thumbnail";
+
+const formidable = Promise.promisifyAll(formidableImport, { multiArgs: true });
 
 export const config = {
   api: {
@@ -9,19 +13,25 @@ export const config = {
 
 export default async (req, res) => {
   const form = new formidable.IncomingForm();
-  form.uploadDir = "./public/thumbnails";
-  form.keepExtensions = true;
-  form.parse(req, (err, fields, { blobContent }) => {
-    const { filepath, newFilename, originalFilename } = blobContent;
-    // For some reason, the file ends up being "[uploadDir]/invalid-name"
-    // Found nothing on internet about `formidable` package naming files `invalid-name` upon upload, so I still don't know what the root cause is
-    fs.rename(
-      form.uploadDir + "/invalid-name",
-      `${form.uploadDir}/${fields["destinationFileName"]}`,
-      (err) => {
-        if (err) console.log(err);
-      }
-    );
-    res.status(200).json({ fields });
-  });
+  form.uploadDir = "public/thumbnails";
+  // form.keepExtensions = true;
+  form
+    .parseAsync(req)
+    .then(([fields, files]) => {
+      return {
+        filePath: files.blobContent.filepath,
+        destinationPath: `${form.uploadDir}/${fields["destinationFileName"]}`,
+      };
+    })
+    .then(({ filePath, destinationPath }) => {
+      rename(filePath, destinationPath);
+      return destinationPath;
+    })
+    .then((fileName) => {
+      res.status(200).json({ filePath: `/${fileName}` });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json({ details: err.toString() });
+    });
 };
