@@ -36,7 +36,7 @@ const MyDoc = (
   <TemplateDoc templateName={"california"} model={{ some: "data" }} />
 );
 
-const uploadPdfBlob = (blob) => (e) => {
+const uploadPdfBlob = (blob) => async (e) => {
   console.log("catching on leave event", blob);
   e.preventDefault();
   e.returnValue = "";
@@ -46,20 +46,15 @@ const uploadPdfBlob = (blob) => (e) => {
   formData.append("blobContent", blob);
   formData.append("destinationFileName", "resumeId-userId.pdf");
 
-  fetch("/api/thumbnails", {
-    method: "POST",
-    body: formData,
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-    })
-    .catch((err) => {
-      console.log(err);
+  try {
+    const response = await fetch("/api/thumbnails", {
+      method: "POST",
+      body: formData,
     });
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
