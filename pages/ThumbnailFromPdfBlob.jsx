@@ -7,7 +7,7 @@ function ThumbnailFromPdfBlob() {
   return (
     <div>
       <BlobProvider document={MyDoc}>
-        {({ blob, url, loading, error, ...other }) => {
+        {({ blob, url, loading, error }) => {
           useEffect(() => {
             const beforeunload = uploadPdfBlob(blob);
             window.addEventListener("beforeunload", beforeunload);
@@ -19,13 +19,11 @@ function ThumbnailFromPdfBlob() {
           return (
             <>
               <div>blob url: {url}</div>
+              <PDFViewer>{MyDoc}</PDFViewer>
             </>
           );
         }}
       </BlobProvider>
-      <PDFViewer>
-        <TemplateDoc templateName={"california"} model={{ some: "data" }} />
-      </PDFViewer>
     </div>
   );
 }
@@ -37,7 +35,6 @@ const MyDoc = (
 );
 
 const uploadPdfBlob = (blob) => async (e) => {
-  console.log("catching on leave event", blob);
   e.preventDefault();
   e.returnValue = "";
 
